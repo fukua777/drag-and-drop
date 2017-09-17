@@ -1,0 +1,30 @@
+<html>
+<head>
+	<title>drag and drop</title>
+	<style type="text/css">
+		#box{
+			width: 230px;
+			height: 300px;
+			margin-top: 30px;
+			border: solid 1px grey;
+		}
+	</style>
+</head>
+<body>
+	<img ondragstart="drag_start(event)" id="img" draggable="true" src="messi.jpeg" width="200px" title="请拖拽图片到放置区域">
+	<div ondrop="drop(event)" ondragover="drag_over(event)" id="box"></div>
+</body>
+</html>
+<script type="text/javascript">
+	var drag_start = function(e){
+		e.dataTransfer.setData('text',e.target.id);
+	}
+	var drop = function(e){
+		e.preventDefault();
+		var src_id = e.dataTransfer.getData('text');
+		e.target.appendChild(document.getElementById(src_id));
+	}
+	var drag_over = function(e){
+		e.preventDefault();
+	}
+</script>
